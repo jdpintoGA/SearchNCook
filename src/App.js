@@ -16,23 +16,22 @@ const App = () => {
 
   useEffect(() => {
     getRecipes()
-    // console.log('getting recipes')
   }, [query])
 
   const getRecipes = async () => {
     const request = await fetch(
-      `https://api.edamam.com/search?q=${query}&app_id=${appId}&app_key=${appKey}`,
+      `https://api.edamam.com/search?q=${query}&app_id=${appId}&app_key=${appKey}`
     )
     const data = await request.json()
     setRecipes(data.hits)
     console.log(data.hits)
   }
 
-  const update = event => {
+  const update = (event) => {
     setSearch(event.target.value)
   }
 
-  const getSearch = event => {
+  const getSearch = (event) => {
     event.preventDefault()
     setQuery(search)
   }
@@ -63,7 +62,7 @@ const App = () => {
       </div>
       <div className="headerSpace"></div>
       <div className="App">
-        {recipes.map(recipe => (
+        {recipes.map((recipe) => (
           <Recipe
             key={recipe.recipe.label}
             title={recipe.recipe.label}
